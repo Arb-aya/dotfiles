@@ -21,10 +21,18 @@ Plugin 'tmhedberg/SimpylFold'
 " Auto indent conforming ot PEP 8 standards (1)
 Plugin 'vim-scripts/indentpython.vim'
 
+Plugin 'vim-airline/vim-airline'
+
+Plugin 'vim-airline/vim-airline-themes'
+
+Plugin 'ycm-core/YouCompleteMe'
+
+Plugin 'psf/black'
 "LIST PLUGINS ABOVE HERE ^
 
 call vundle#end()
 filetype plugin indent on
+
 
 
 "PEP8 Indentation (1)
@@ -42,17 +50,20 @@ au BufNeWFile,BufRead *.html, *.js, *.css
 	\set softtabstop=2
 	\set shiftwidth=2
 
+"Execute Black when saving py files
+autocmd BufWritePre *.py execute ':Black'
+
 " Disable arrow keys in escape mode (3)
-map <up> <nop> 
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+map <Up> <nop>
+map <Down> <nop>
+map <Left> <nop>
+map <Right> <nop>
 
 " Disable arrow keys in insert mode (3)
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+imap <Up> <nop>
+imap <Down> <nop>
+imap <Left> <nop>
+imap <Right> <nop>
 
 " Fullscreen a split (3)
 noremap ff :resize 100 <cr> <bar> :vertical resize 220<cr>
@@ -78,5 +89,25 @@ set encoding=utf-8
 " Line numbers
 set number
 
+" Toggle relative line numbers 
+nmap <space> :set invrelativenumber<cr>
 
+"YCM auto-complete window goes away when we're done with it
+let g:ycm_autoclose_preview_window_after_completion=1
 
+"Goto definition under cursor
+map <leader>g :YcmCompleter GoTo<cr>
+
+"python with virtual env support (1)
+py3 << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+	project_base_dir = os.environ['VIRTUAL_ENV']
+	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+	execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let g:black_virtualenv="~/.vim_black"
+let python_highlight_all=1
+syntax on
