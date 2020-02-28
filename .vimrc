@@ -29,6 +29,8 @@ Plugin 'ycm-core/YouCompleteMe'
 
 Plugin 'psf/black'
 
+Plugin 'preservim/nerdtree'
+
 Plugin 'liuchengxu/space-vim-dark'
 "LIST PLUGINS ABOVE HERE ^
 
@@ -116,4 +118,6 @@ let python_highlight_all=1
 
 syntax on
 
+"Nerdtree
+map <C-n> :NERDTreeToggle<CR>
 colo space-vim-dark
