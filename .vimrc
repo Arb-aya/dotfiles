@@ -28,6 +28,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'ycm-core/YouCompleteMe'
 
 Plugin 'psf/black'
+
+Plugin 'liuchengxu/space-vim-dark'
 "LIST PLUGINS ABOVE HERE ^
 
 call vundle#end()
@@ -109,5 +111,9 @@ if 'VIRTUAL_ENV' in os.environ:
 EOF
 
 let g:black_virtualenv="~/.vim_black"
+
 let python_highlight_all=1
+
 syntax on
+
+colo space-vim-dark
