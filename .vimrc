@@ -109,15 +109,6 @@ set hlsearch "Highlight search terms
 set incsearch "Searches are performed as you type
 set splitbelow splitright "Splits open below or to the right
 
-"python with virtual env support (1)
-py3 << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-	project_base_dir = os.environ['VIRTUAL_ENV']
-	activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-	execfile(activate_this, dict(__file__=activate_this))
-EOF
 
 " -------------------- NERD TREE
 "
@@ -159,3 +150,7 @@ let g:airline_theme='deus'
 let g:ycm_autoclose_preview_window_after_completion=1
 "Go to definition under cursor
 map <leader>g :YcmCompleter Goto
+"Stop asking to load in .ycm_extra_conf files for python virtual environments
+"Not the best way, better to use g:ycm_extra_conf_globlist, but for now it
+"does
+let g:ycm_confirm_extra_conf = 0
