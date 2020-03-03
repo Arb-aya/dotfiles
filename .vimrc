@@ -22,24 +22,38 @@ Plugin 'tmhedberg/SimpylFold'
 " Auto indent conforming ot PEP 8 standards (1)
 Plugin 'vim-scripts/indentpython.vim'
 
+"Nicer looking status bar
 Plugin 'vim-airline/vim-airline'
 
 " See (4) on how to get theme displaying properly
-Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'vim-airline/vim-airline-themes'
 
+"File browsing in vim
 Plugin 'preservim/nerdtree'
 
+"Run various fixers / linters
 Plugin 'dense-analysis/ale'
 
+"Python fixer
 Plugin 'psf/black'
 
-Plugin 'liuchengxu/space-vim-dark'
+"Plugin 'liuchengxu/space-vim-dark'
+Plugin 'tomasiser/vim-code-dark'
 
+"Git functionality
 Plugin 'tpope/vim-fugitive'
 
+"Auto complete
 Plugin 'ycm-core/YouCompleteMe'
 
+"Emmet functionality...
+Plugin 'mattn/emmet-vim'
+
+"Pair brackets [](){}
 Plugin 'jiangmiao/auto-pairs'
+
+"Auto close HTML tags
+Plugin 'alvan/vim-closetag'
 "LIST PLUGINS ABOVE HERE ^
 
 call vundle#end()
@@ -56,7 +70,7 @@ au BufNewFile,BufRead *.py
 	\set autoindent " Auto indent on new lines when coding
 	\set fileformat=unix "Prevent conversion issues with github
 
-au BufNeWFile,BufRead *.html, *.js, *.css
+au BufNeWFile,BufRead html
 	\set tabstop=2
 	\set softtabstop=2
 	\set shiftwidth=2
@@ -103,12 +117,13 @@ nmap <space> :set invrelativenumber<cr>
 "
 set encoding=utf-8 " Support utf-8
 set number " Line numbers
-colo space-vim-dark "Colour scheme
+colo codedark "Colour scheme
 syntax on "Syntax highlighting
 set hlsearch "Highlight search terms
 set incsearch "Searches are performed as you type
 set splitbelow splitright "Splits open below or to the right
-
+"Store swap files in ~/.vim/tmp
+set directory^=$HOME/.vim/tmp// "https://vi.stackexchange.com/questions/177/what-is-the-purpose-of-swap-files
 
 " -------------------- NERD TREE
 "
@@ -141,7 +156,7 @@ set noshowmode
 let g:airline_powerline_fonts = 1
 
 "Airline theme
-let g:airline_theme='deus'
+let g:airline_theme='codedark'
 
 
 " -------------------- YOU COMPLETE ME
@@ -154,3 +169,82 @@ map <leader>g :YcmCompleter Goto
 "Not the best way, better to use g:ycm_extra_conf_globlist, but for now it
 "does
 let g:ycm_confirm_extra_conf = 0
+
+
+" ------------------ EMMET
+"
+" Remap default leader for emmet which is <C-Y>:
+let g:user_emmet_leader_key=','
+
+" Expand ! / html:5 beyond initial basic implementation
+let g:user_emmet_settings = {
+			\  'html': {
+			\    'snippets': {
+			\      'html:5': '!!!+html>(head>(meta[charset=${charset}]+meta[name="viewport" content="width=device-width,initial-scale=1.0"]+meta[http-equiv="X-UA-Compatible" content="ie=edge"]+title))+body'
+			\}
+			\}
+			\}
+
+
+" ---- NERDTREE Hide files on the fly:
+"https://www.reddit.com/r/vim/comments/541xlg/nerdtree_tip_hide_files_onthefly/"
+"--------------------------------------------------------------
+" Hide files from NERDTree with 'dd'
+" Unhide all files with 'dua'
+" Unhide singular file 'dus'
+let g:MyNERDTreeIgnore=[] " List of ignored files
+let ignoreSingleKeyMap = {
+    \ 'key':           'dd',
+    \ 'callback':      'MyNERDTreeIgnoreSingle',
+    \ 'scope':         'Node',
+    \ 'quickhelpText': 'Hide(ignore) the selected file' }
+let unignoreAllKeyMap = {
+    \ 'key':           'dua',
+    \ 'callback':      'MyNERDTreeUnignoreAll',
+    \ 'scope':         'Node',
+    \ 'quickhelpText': 'Unhide all hidden(ignored) files' }
+let unignoreSingleKeyMap = {
+    \ 'key':           'dus',
+    \ 'callback':      'MyNERDTreeUnignoreSingle',
+    \ 'scope':         'Node',
+    \ 'quickhelpText': 'Unhide a single hidden(ignored) file' }
+augroup NERDTreeHide
+  autocmd!
+  autocmd VimEnter *  call NERDTreeAddKeyMap(ignoreSingleKeyMap) |
+                    \ call NERDTreeAddKeyMap(unignoreAllKeyMap) |
+                    \ call NERDTreeAddKeyMap(unignoreSingleKeyMap) |
+                    \ call NERDTreeAddPathFilter('MyFilter')
+augroup END
+"--------------------------------------------------------------------
+" Ignore Single
+function MyNERDTreeIgnoreSingle(node)
+  let path = a:node['path'].str()
+  if index(g:MyNERDTreeIgnore, path) != -1 |  return | endif " If exists, return
+  call add(g:MyNERDTreeIgnore, path) | call NERDTreeRender()
+endfunction
+"--------------------------------------------------------------------
+" Unignore all
+function MyNERDTreeUnignoreAll(node)
+  let g:MyNERDTreeIgnore=[] | call NERDTreeRender()
+endfunction
+"--------------------------------------------------------------------
+" Unignore Single
+function MyNERDTreeUnignoreSingle(node)
+  let promptlist = ['Select File to Unhide:', '-------------------------']
+  let cntr = 1
+  for i in g:MyNERDTreeIgnore
+    call add(promptlist, cntr . '. ' . i) | let cntr += 1
+  endfor
+  call inputsave() | let fileindex = (inputlist(promptlist) - 1) | call inputrestore()
+  if fileindex < 0
+    echom "Invalid number (Too low)" | return
+  elseif fileindex > (len(g:MyNERDTreeIgnore) - 1)
+    echom "Invalid number (Too high)" | return
+  endif
+  call remove(g:MyNERDTreeIgnore, fileindex) | call NERDTreeRender()
+endfunction
+"--------------------------------------------------------------------
+" Ignore Filter Function
+function! MyFilter(params)
+  return (index(g:MyNERDTreeIgnore, a:params['path'].str()) != -1)
+endfunction
