@@ -1,4 +1,4 @@
-alias vv='vim ~/.vimrc'
-alias bb='vim ~/.bashrc'
-alias black="python3 ~/.local/lib/python3.6/site-packages/black.py"
-alias activate=". ./bin/activate"
+alias vim='nvim'
+alias vv='nvim ~/.config/nvim/init.vim'
+alias ba='nvim ~/.bash_aliases'
+alias activate=". ./env/bin/activate"
