@@ -6,12 +6,12 @@
 "------------------------------
 
 "------------------------------
-" 	GENERAL SETTINGS	
+" 	GENERAL SETTINGS
 "------------------------------
 
-set hlsearch 	"Highlight search terms	
+set hlsearch 	"Highlight search terms
 set incsearch	"Searches are performed as you type
-set number	"So line numbers	
+set number	"So line numbers
 set expandtab	"Expand tabs into spaces
 set tabstop=8
 set softtabstop=0
@@ -22,10 +22,8 @@ set noswapfile
 set termguicolors
 "set foldmethod=indent
 
-
-
 "------------------------------
-"	KEY MAPPINGS	
+"	KEY MAPPINGS
 "------------------------------
 "Disable arrow keys in escape mode (1)
 map <Up> <nop>
@@ -54,11 +52,13 @@ set splitright
 " Install xclip to access system clipboard buffers
 set clipboard+=unnamedplus
 
+" Enter terminal emulate in insert mode automatically
+autocmd TermOpen * startinsert
 
 "Folding (Unfold all folds when opening a buffer)(3)
 "autocmd BufWinEnter * silent! :%foldopen!
 
-"Leader 
+"Leader
 let mapleader = ","
 
 " remap esc
@@ -84,7 +84,7 @@ nnoremap confr :source ~/.config/nvim/init.vim<cr>
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'Shougo/deoplete.nvim', {'do':  ':UpdateRemotePlugins'} 
+Plug 'Shougo/deoplete.nvim', {'do':  ':UpdateRemotePlugins'}
 
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}
 
@@ -101,7 +101,7 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'dense-analysis/ale' 
+Plug 'dense-analysis/ale'
 
 Plug 'morhetz/gruvbox'
 
@@ -116,16 +116,16 @@ Plug 'tpope/vim-fugitive'
 call plug#end()
 
 "------------------------------
-" PLUGIN SETTINGS 
+" PLUGIN SETTINGS
 "------------------------------
 
-" DEOPLETE 
+" DEOPLETE
 let g:python3_host_prog = '~/.pyenv/versions/3.8.2/bin/python'
 let g:deoplete#enable_at_startup = 1
 call deoplete#custom#option('auto_complete_delay', 100) "Prevent deoplete slowing semshi
 
 " Close function sig window for autocomplete (2)
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif 
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 "Tab through autocomplete suggestions (2)
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -134,14 +134,14 @@ inoremap <expr><S-tab> pumvisible() ? "\<c-p>" : "\<S-tab>"
 " VIM-AIRLINE
 let g:airline_powerline_fonts = 1
 let g:airline_theme='bubblegum'
-
+let g:airline#extensions#ale#enabled = 1
 " NERDTREE
 map <C-n> :NERDTreeToggle<cr>
 
 "Close vim if nerdtree is the last buffer open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" INDENTLINE 
+" INDENTLINE
 set list
 set listchars=eol:↴
 set listchars+=tab:│⋅
@@ -169,7 +169,7 @@ colorscheme gruvbox
 " Semshi highlight colours
 function CustomHighlights()
         hi semshiImported guifg=#fb4934 gui=bold
-        hi semshiSelected guifg=#1d2021 guibg=#8ec07c 
+        hi semshiSelected guifg=#1d2021 guibg=#8ec07c
         hi semshiParameter guifg=#fabd2f
         hi semshiParameterUnused guifg=#a89984 guibg=#32302f cterm=none gui=none
         hi semshiBuiltin guifg=#d3869b
@@ -189,12 +189,16 @@ autocmd ColorScheme * call CustomHighlights()
 let g:ale_completion_enabled = 0
 
 let g:ale_linters = {
-        \'python':['flake8']
+        \'python':['flake8'],
+        \'javascript':['eslint'],
 \}
 
 let g:ale_fixers={
         \'*': ['remove_trailing_lines','trim_whitespace'],
-        \'python': ['black','isort']
+        \'python': ['yapf','isort'],
+        \'javascript': ['prettier']
 \}
 
-let g:alex_fix_on_save = 1
+let g:ale_fix_on_save = 1
+
+let g:semshi#error_sign=0
