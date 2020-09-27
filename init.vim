@@ -6,79 +6,6 @@
 "------------------------------
 
 "------------------------------
-" 	GENERAL SETTINGS
-"------------------------------
-
-set hlsearch 	"Highlight search terms
-set incsearch	"Searches are performed as you type
-set number	"So line numbers
-set expandtab	"Expand tabs into spaces
-set tabstop=8
-set softtabstop=0
-set tabstop
-set shiftwidth=4
-set smarttab
-set noswapfile
-set termguicolors
-"set foldmethod=indent
-
-"------------------------------
-"	KEY MAPPINGS
-"------------------------------
-"Disable arrow keys in escape mode (1)
-map <Up> <nop>
-map <Down> <nop>
-map <Left> <nop>
-map <Right> <nop>
-
-"Disable arrow keys in insert mode (1)
-imap <Up> <nop>
-imap <Down> <nop>
-imap <Left> <nop>
-imap <Right> <nop>
-
-"Vim splits
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-noremap ff :resize 100 <cr> <bar> :vertical resize 220<cr>
-noremap fm <C-w>=
-
-set splitbelow
-set splitright
-
-" Install xclip to access system clipboard buffers
-set clipboard+=unnamedplus
-
-" Enter terminal emulate in insert mode automatically
-autocmd TermOpen * startinsert
-
-"Folding (Unfold all folds when opening a buffer)(3)
-"autocmd BufWinEnter * silent! :%foldopen!
-
-"Leader
-let mapleader = ","
-
-" remap esc
-imap jk <esc>
-
-"Disable mouse scroll wheel (1)
-inoremap <ScrollWheelUp> <nop>
-inoremap <ScrollWheelDown> <nop>
-
-"Toggle relative line numbers
-nmap <space> :set invrelativenumber<cr>
-
-nnoremap <esc> :noh<return><esc>
-noremap ,, <esc>:w!<cr>
-
-
-nnoremap confe :e ~/.config/nvim/init.vim<cr>
-nnoremap confr :source ~/.config/nvim/init.vim<cr>
-
-"------------------------------
 "   VIM-PLUG
 "------------------------------
 
@@ -114,6 +41,79 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'tpope/vim-fugitive'
 
 call plug#end()
+"------------------------------
+" 	GENERAL SETTINGS
+"------------------------------
+
+let mapleader = ","
+
+" TABS
+set expandtab	"Expand tabs into spaces
+"set tabstop=8
+set softtabstop=0
+set shiftwidth=4
+set smarttab
+set noswapfile
+
+" SEARCH
+set hlsearch 	"Highlight search terms
+set incsearch	"Searches are performed as you type
+
+" LINE NUMBERS
+set number  	"show line numbers
+set termguicolors
+
+"Disable arrow keys in escape mode (1)
+map <Up> <nop>
+map <Down> <nop>
+map <Left> <nop>
+map <Right> <nop>
+
+"Disable arrow keys in insert mode (1)
+imap <Up> <nop>
+imap <Down> <nop>
+imap <Left> <nop>
+imap <Right> <nop>
+
+"Vim splits
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+noremap ff :resize 100 <cr> <bar> :vertical resize 220<cr>
+noremap fm <C-w>=
+
+set splitbelow
+set splitright
+
+" Install xclip to access system clipboard buffers
+set clipboard+=unnamedplus
+
+" Enter terminal emulate in insert mode automatically
+autocmd TermOpen * startinsert
+
+"Folding (Unfold all folds when opening a buffer)(3)
+"autocmd BufWinEnter * silent! :%foldopen!
+
+
+" remap esc
+imap jk <esc>
+
+"Disable mouse scroll wheel (1)
+inoremap <ScrollWheelUp> <nop>
+inoremap <ScrollWheelDown> <nop>
+
+"Toggle relative line numbers
+nmap <space> :set invrelativenumber<cr>
+
+nnoremap <esc> :noh<return><esc>
+noremap ,, <esc>:w!<cr>
+
+
+nnoremap confe :e ~/.config/nvim/init.vim<cr>
+nnoremap confr :source ~/.config/nvim/init.vim<cr>
+
 
 "------------------------------
 " PLUGIN SETTINGS
