@@ -1,0 +1,34 @@
+{
+  "session_name": "NOTES",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "GENERAL",
+      "layout": "b9bd,173x43,0,0,0",
+      "panes": [
+        {
+          "shell_command": "nvim General_Notes.md",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Notes"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "SHITHEAD",
+      "layout": "b9be,173x43,0,0,1",
+      "panes": [
+        {
+          "shell_command": "nvim Shithead_TODO.md",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Notes"
+    }
+  ]
+}

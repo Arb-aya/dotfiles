@@ -1,0 +1,49 @@
+{
+  "session_name": "Shithead_Dev-1",
+  "detatched": "true",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "mongodb shell",
+      "layout": "b9bf,173x43,0,0,2",
+      "panes": [
+        {
+          "shell_command": "mongo",
+          "focus": "false"
+        }
+      ],
+      "focus": "false",
+      "start_directory": "/home/kit"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "Server",
+      "layout": "b9c0,173x43,0,0,3",
+      "panes": [
+        {
+          "shell_command": "python run.py",
+          "focus": "false"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/SeagullsShithead"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "Nvim",
+      "layout": "b9c1,173x43,0,0,4",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "false"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/SeagullsShithead"
+    }
+  ]
+}
