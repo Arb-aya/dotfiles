@@ -10,7 +10,7 @@
       "layout": "b9bf,173x43,0,0,2",
       "panes": [
         {
-          "shell_command": "mongo",
+          "shell_command": ["systemctl start mongod && mongo"],
           "focus": "false"
         }
       ],
@@ -29,7 +29,7 @@
           "focus": "false"
         }
       ],
-      "start_directory": "/home/kit/Documents/Python/SeagullsShithead"
+      "start_directory": "/home/kit/Documents/Python/Shithead"
     },
     {
       "options": {
@@ -40,10 +40,10 @@
       "panes": [
         {
           "shell_command": "nvim",
-          "focus": "false"
+          "focus": "true"
         }
       ],
-      "start_directory": "/home/kit/Documents/Python/SeagullsShithead"
+      "start_directory": "/home/kit/Documents/Python/Shithead"
     }
   ]
 }

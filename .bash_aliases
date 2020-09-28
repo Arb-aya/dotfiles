@@ -6,9 +6,9 @@ alias activate=". ./venv/bin/activate"
 alias pip='pip3'
 alias python='python3'
 
-alias mongostart='sudo systemctl start mongod'
-alias mongostatus='sudo systemctl status mongod'
-alias mongostop='sudo systemctl stop mongod'
-alias mongorestart='sudo systemctl restart mongod'
+alias mongostart='systemctl start mongod'
+alias mongostatus='systemctl status mongod'
+alias mongostop='systemctl stop mongod'
+alias mongorestart='systemctl restart mongod'
 
 alias dev='$HOME/Scripts/dev.sh'
