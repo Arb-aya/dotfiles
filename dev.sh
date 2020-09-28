@@ -48,18 +48,24 @@ setup_python_project(){
 
 # Process optional flags
 optional_count=0
-while getopts ":n" opt; do
+load_discretely=0
+
+while getopts ":n:d" opt; do
      case $opt in
          n)
              tmuxp load -d "$HOME/.tmuxp/notes.json"
              let "optional_count=optional_count+1"
          ;;
 
+         d)
+             let "load_discretely=load_discretely+1"
+             let "optional_count=optional_count+1"
+            ;;
+
         \?)
              printf "Invalid option: -$OPTARG" >&2
              exit 1
          ;;
-
          #:)
              #printf "Option -$OPTARG requires an argument." >&2
              #exit 1
@@ -124,7 +130,11 @@ project_path="$HOME/Documents/$language/$project/"
         printf "true\n"
         printf "Looking for tmuxp config for $project\n"
         if [[ -e "$HOME/.tmuxp/$project.json" ]]; then
-            tmuxp load -d "$HOME/.tmuxp/$project.json" && printf "\n"
+            if [[ $load_discretely -ne 0 ]]; then
+                tmuxp load -d "$HOME/.tmuxp/$project.json" && printf "\n"
+            else
+                tmuxp load "$HOME/.tmuxp/$project.json" && printf "\n"
+            fi
         fi
     else
         printf "false\n"
