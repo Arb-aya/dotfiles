@@ -50,7 +50,7 @@ setup_python_project(){
 optional_count=0
 load_discretely=0
 
-while getopts ":n:d" opt; do
+while getopts ":nd" opt; do
      case $opt in
          n)
              tmuxp load -d "$HOME/.tmuxp/notes.json"
@@ -75,7 +75,6 @@ done
 
 #If there were any optional args, shift parameters left that amount
 shift $optional_count
-
 #If we don't have two arguments, tell the user we need them and bail
 if [[ $# -ne 2 ]]; then
     printf "Usage: ./dev.sh <language> <project name>"
