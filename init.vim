@@ -20,13 +20,13 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-surround'
 
+Plug 'airblade/vim-gitgutter'
+
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Using plugin coc-python
-" :CocInstall coc-python
 
 " Fuzzy file finding
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
@@ -41,13 +41,12 @@ call plug#end()
 " 	GENERAL SETTINGS
 "------------------------------
 let mapleader = ","
-set encoding=utf8
 
 
 "Colours / Theme
 " Need a Nerd font to work with some plugins. I set this in the terminal
 " currently using Fira Code
-
+" https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode
 if (has("nvim"))
     let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
@@ -56,14 +55,16 @@ if( has("termguicolors"))
     set termguicolors
 endif
 
-let g:onedark_termcolors=256
-
 syntax on
-colorscheme onedark
+colorscheme gruvbox
+
+let g:gruvbox_contrast_dark='hard'
+
+hi Normal guibg=NONE ctermbg=NONE
 
 "Change coc highlighting under the cursor to make it more visible
 highlight CocHighlightText ctermfg=26 ctermbg=103 guifg=#282c34 guibg=#abb2bf
-" TABS
+" TAB
 set expandtab	"Expand tabs into spaces
 set tabstop=8
 set softtabstop=0
@@ -146,13 +147,13 @@ set showbreak=↳⋅
 set conceallevel=2
 set concealcursor=n
 
-let g:python3_host_prog = '~/.pyenv/versions/3.8.2/bin/python'
+let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 "------------------------------
 " PLUGIN SETTINGS
 "------------------------------
 " VIM-AIRLINE
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
 let g:airline#extensions#ale#enabled = 1
 
 "NERDTREE
@@ -173,8 +174,13 @@ let g:fzf_action={
             \'ctrl-v': 'vsplit'
             \}
 
+"You need to install ag for this to work as FZF defaults to using find
+let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""' 
 "COC
 let g:coc_global_extensions = ['coc-eslint','coc-highlight', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-python', 'coc-prettier']
+
+"Select Interpreter 
+nnoremap <leader>pi :CocCommand python.setInterpreter <cr>
 
 "Use tab for trigger completion 
 inoremap <silent><expr> <TAB>
@@ -209,3 +215,5 @@ autocmd CursorHold * call CocActionAsync('highlight')
 " Rename
 nmap <leader>rn <Plug>(coc-rename)
 
+" Work around for coc-python not running isort on save
+autocmd BufWrite *.py :CocCommand python.sortImports

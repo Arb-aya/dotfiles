@@ -1,18 +1,9 @@
 {
-  "coc.preferences.formatOnSaveFiletypes": [
-    "python",
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "javascriptreact",
-    "typescript.tsx"
-  ],
-  "eslint.filetypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "javascriptreact",
-    "typescript.tsx"
-  ]
+    "coc.preferences.jumpCommand":"vsplit",
+    "coc.preferences.formatOnSaveFiletypes": ["python", "javascript"],
+    "python.jediEnabled": false,
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    "python.formatting.provider": "yapf",
+    "python.sortImports.path": "isort"
 }

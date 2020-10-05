@@ -25,7 +25,7 @@
       "layout": "b9c0,173x43,0,0,3",
       "panes": [
         {
-          "shell_command": "python run.py",
+          "shell_command": "python -m app.run",
           "focus": "false"
         }
       ],
