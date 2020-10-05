@@ -37,21 +37,7 @@ make_backup(){
 }
 
 update(){
-printf "Updating up init.vim\n"
-cp -i back_up_dir/init.vim $HOME/.config/nvim
-printf $?
-
-printf "Updating up coc-settings.json\n"
-cp -i back_up_dir/coc-settings.json $HOME/.config/nvim
-printf $?
-
-printf "Updating tmuxp.json\n"
-cp -r -i back_up_dir/.tmuxp $HOME
-printf $?
-
-printf "Updating scripts\n"
-cp -r -i back_up_dir/Scripts $HOME/Documents
-printf $?
+    echo "update here"
 }
  
 if [[ $# -ne 1 ]];then
