@@ -24,7 +24,14 @@ make_backup(){
     printf $?
     printf "\n"
 
+
+    printf "Backing up bash_aliases..."
+    cp -r $HOME/.bash_aliases $back_up_dir
+    printf $?
+    printf "\n"
+
     printf "Push to github? [y/n]"
+
     read -n 1 ans
     printf "\n"
     

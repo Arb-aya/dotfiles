@@ -1,0 +1,29 @@
+{
+  "session_name": "0",
+  "windows": [
+    {
+      "options": {},
+      "window_name": "node",
+      "layout": "d0bd,190x49,0,0,0",
+      "panes": [
+        {
+         "shell_command": "live-server"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Website/beginworld"
+    },
+    {
+      "options": {},
+      "window_name": "nvim",
+      "layout": "d0be,190x49,0,0,1",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/Website/beginworld"
+    }
+  ]
+}
