@@ -30,6 +30,11 @@ make_backup(){
     printf $?
     printf "\n"
 
+    printf "Backing up notes..."
+    cp -r $HOME/Documents/Notes/ $back_up_dir
+    printf $?
+    printf "\n"
+
     printf "Push to github? [y/n]"
 
     read -n 1 ans
