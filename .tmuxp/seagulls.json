@@ -1,0 +1,20 @@
+{
+  "session_name": "seagulls",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "vim",
+      "layout": "b260,80x24,0,0,3",
+      "panes": [
+        {
+          "shell_command": "vim",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/Website/seagulls"
+    }
+  ]
+}

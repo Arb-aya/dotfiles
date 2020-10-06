@@ -8,3 +8,4 @@ alias dotfiles='$HOME/Documents/Scripts/dotfiles.sh'
 alias dev-update='$HOME/Documents/Scripts/update.sh'
 
 alias wally='$HOME/Wally/wally'
+alias sizzy='$HOME/Sizzy/Sizzy-0.37.0.AppImage'

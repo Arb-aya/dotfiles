@@ -45,6 +45,12 @@ setup_python_project(){
 
 }
 
+init_git(){
+ git init
+ touch .gitignore
+ touch README.md
+ echo .gitignore >> .gitignore
+}
 
 # Process optional flags
 optional_count=0
@@ -121,6 +127,9 @@ project_path="$HOME/Documents/$language/$project/"
             exit 0
         fi
     fi
+    
+    cd $project_path
+    init_git
 
     #If we reach this point the directory already exists or it has been created
     #TODO Allow user to change location of tmuxp home use YAML?
@@ -134,6 +143,11 @@ project_path="$HOME/Documents/$language/$project/"
             else
                 tmuxp load "$HOME/.tmuxp/$project.json" && printf "\n"
             fi
+        else 
+            cd $project_path
+            tmux new -d -s $project -n vim "vim"
+            tmuxp freeze $project
+            
         fi
     else
         printf "false\n"
