@@ -23,6 +23,7 @@ Plug 'machakann/vim-highlightedyank'
 Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 
 Plug 'airblade/vim-gitgutter'
 
