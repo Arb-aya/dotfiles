@@ -1,6 +1,7 @@
 {
     "coc.preferences.jumpCommand":"vsplit",
     "coc.preferences.formatOnSaveFiletypes": ["python","javascript"],
+    "highlight.disableLanguages":["javascript"],
     "python.jediEnabled": false,
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
