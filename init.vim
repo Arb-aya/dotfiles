@@ -30,13 +30,14 @@ Plug 'tpope/vim-repeat'
 " show git symbols in the gutter
 Plug 'airblade/vim-gitgutter'
 
+"LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Things I use with coc.nvim see g:coc_global_extensions
 
-"Javascript related highlighting
-Plug 'pangloss/vim-javascript'
-Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
-Plug 'jparise/vim-graphql'
+"Javascript 
+" Highlighting
+Plug 'yuezk/vim-js'
+Plug 'maxmellon/vim-jsx-pretty' 
 
 " Fuzzy file finding
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
@@ -86,7 +87,8 @@ set shiftwidth=2
 set autoindent
 autocmd Filetype python setlocal tabstop=4 shiftwidth=4 
 
-" set hidden  "Hides buffers instead of closing them.
+set hidden  "Hides buffers instead of closing them.
+						"needed for renaming symbols using language servers
 
 set updatetime=300 " More responsive feel from coc
 
@@ -253,7 +255,7 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 "Coc extensions to install when you use vim. Easier to list them here and then
 "forget about them. Use :CocList extensions to manage them (press tab on an
 "extension for options)
-let g:coc_global_extensions = ['coc-eslint','coc-highlight', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-python', 'coc-prettier']
+let g:coc_global_extensions = ['coc-tsserver','coc-eslint','coc-highlight', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-python', 'coc-prettier']
 
 " I disable coc-highlight for javascript so I can use other plugins for
 " those filetypes. Provides a better experience for react.
@@ -301,3 +303,12 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " Work around for coc-python not running isort on save
 autocmd BufWrite *.py :CocCommand python.sortImports
+
+"#################################################################################################### 
+"###                                                                                              ###
+"###                                          Javascript                                          ###
+"###                                                                                              ###
+"#################################################################################################### 
+
+" Highlight close tag separately from the opening tag
+let g:vim_jsx_pretty_highlight_close_tag = 0
