@@ -1,0 +1,62 @@
+{
+  "session_name": "0",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "npm start",
+      "layout": "d0bd,190x49,0,0,0",
+      "panes": [
+        {
+          "shell_command": "npm",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/React/learning"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "index.js",
+      "layout": "d0be,190x49,0,0,1",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/React/learning"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "React notes",
+      "layout": "d0bf,190x49,0,0,2",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/Notes"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "javascript notes",
+      "layout": "d0c1,190x49,0,0,4",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Notes"
+    }
+  ]
+}
