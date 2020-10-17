@@ -7,15 +7,10 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-"airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'justinmk/vim-dirvish'
 
 "commenting/uncommenting
 Plug 'scrooloose/nerdcommenter'
-
-"filebrowsing
-Plug 'scrooloose/nerdtree'
 
 "show what's been yanked
 Plug 'machakann/vim-highlightedyank'
@@ -42,11 +37,6 @@ Plug 'maxmellon/vim-jsx-pretty'
 " Fuzzy file finding
 Plug 'junegunn/fzf', {'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-
-" Show icons for file types in nerdtree
-" Needs to be loaded after a load of plugins, easier to
-" load it last
-Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -194,32 +184,6 @@ hi Normal guibg=NONE ctermbg=NONE
 "Change coc highlighting under the cursor to make it more visible
 highlight CocHighlightText ctermfg=26 ctermbg=103 guifg=#282c34 guibg=#abb2bf
 
-
-"#################################################################################################### 
-"###                                                                                              ###
-"###                                          VIM-AIRLINE                                         ###
-"###                                                                                              ###
-"#################################################################################################### 
-let g:airline_powerline_fonts = 1
-let g:airline_theme='gruvbox'
-let g:airline#extensions#ale#enabled = 1
-
-
-"#################################################################################################### 
-"###                                                                                              ###
-"###                                          NERDTREE                                            ###
-"###                                                                                              ###
-"#################################################################################################### 
-
-"How do you open nerdtree?
-nnoremap <silent> <C-b> :NERDTreeToggle<cr>
-
-let g:NERDTreeShowHidden = 1
-let g:NERDTreeMinimalUI = 1
-let g:NERDTreeIgnore = []
-let g:NERDTreeStatusLine = ''
-"Close vim if nerdtree is the last buffer open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "#################################################################################################### 
 "###                                                                                              ###
