@@ -16,5 +16,5 @@ Ctrl + S Ctrl + s B = {
 `-` to view files
 `:e` to create a new file
 `% <tab>` to expand to full file path
-
+`x` to mark files
 Use `:Shdo` to modify selected file paths and `Z!` or `!%` to execute it

@@ -15,15 +15,15 @@ Plug 'scrooloose/nerdcommenter'
 "show what's been yanked
 Plug 'machakann/vim-highlightedyank'
 
-" theme
-Plug 'morhetz/gruvbox'
-
 " surround and repeat to repeat surround commands
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 " show git symbols in the gutter
 Plug 'airblade/vim-gitgutter'
+
+"theme 
+Plug 'morhetz/gruvbox'
 
 "LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -177,13 +177,6 @@ endif
 
 colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
-
-"Transparent background
-hi Normal guibg=NONE ctermbg=NONE
-
-"Change coc highlighting under the cursor to make it more visible
-highlight CocHighlightText ctermfg=26 ctermbg=103 guifg=#282c34 guibg=#abb2bf
-
 
 "#################################################################################################### 
 "###                                                                                              ###
