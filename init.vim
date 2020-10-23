@@ -269,3 +269,31 @@ autocmd BufWrite *.py :CocCommand python.sortImports
 
 " Highlight close tag separately from the opening tag
 let g:vim_jsx_pretty_highlight_close_tag = 0
+
+
+
+
+
+
+
+augroup dirvish_config
+	autocmd!
+
+	" Map `t` to open in new tab.
+	autocmd FileType dirvish
+		\  nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+		\ |xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+
+	" Map `h` top open in new horizontal split
+	autocmd FileType dirvish
+		\  nnoremap <silent><buffer> h :call dirvish#open('split', 0)<CR>
+		\ |xnoremap <silent><buffer> h :call dirvish#open('split', 0)<CR>
+
+	" Map `gr` to reload.
+	autocmd FileType dirvish nnoremap <silent><buffer>
+		\ gr :<C-U>Dirvish %<CR>
+
+	" Map `gh` to hide dot-prefixed files.  Press `R` to "toggle" (reload).
+	autocmd FileType dirvish nnoremap <silent><buffer>
+		\ gh :silent keeppatterns g@\v/\.[^\/]+/?$@d _<cr>:setl cole=3<cr>
+augroup END
