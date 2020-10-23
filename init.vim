@@ -175,8 +175,17 @@ if( has("termguicolors"))
     set termguicolors
 endif
 
-colorscheme gruvbox
 let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+
+"Change the background of inactive panes
+"https://jdhao.github.io/2020/09/22/highlight_groups_cleared_in_nvim/
+augroup custom_highlight
+  autocmd!
+  au ColorScheme * highlight MyNormalNC ctermbg=235 guibg=#282828
+augroup END
+
+set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
 
 "#################################################################################################### 
 "###                                                                                              ###
@@ -191,8 +200,8 @@ nnoremap <C-p> :FZF<cr>
 "ctrl v to open in a vertical split
 let g:fzf_action={
             \'ctrl-t': 'tab-split',
-            \'ctrl-s': 'split',
-            \'ctrl-v': 'vsplit'
+            \'ctrl-v': 'vsplit',
+            \'ctrl-s': 'split'
             \}
 
 "also search hidden files
@@ -263,7 +272,7 @@ autocmd BufWrite *.py :CocCommand python.sortImports
 
 "#################################################################################################### 
 "###                                                                                              ###
-"###                                          Javascript                                          ###
+"###                                          JAVASCRIPT                                          ###
 "###                                                                                              ###
 "#################################################################################################### 
 
@@ -273,9 +282,11 @@ let g:vim_jsx_pretty_highlight_close_tag = 0
 
 
 
-
-
-
+"#################################################################################################### 
+"###                                                                                              ###
+"###                                          DIRVISH                                             ###
+"###                                                                                              ###
+"#################################################################################################### 
 augroup dirvish_config
 	autocmd!
 
@@ -284,10 +295,9 @@ augroup dirvish_config
 		\  nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 		\ |xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
 
-	" Map `h` top open in new horizontal split
 	autocmd FileType dirvish
-		\  nnoremap <silent><buffer> h :call dirvish#open('split', 0)<CR>
-		\ |xnoremap <silent><buffer> h :call dirvish#open('split', 0)<CR>
+		\  nnoremap <silent><buffer> s :call dirvish#open('split', 0)<CR>
+		\ |xnoremap <silent><buffer> s :call dirvish#open('split', 0)<CR>
 
 	" Map `gr` to reload.
 	autocmd FileType dirvish nnoremap <silent><buffer>

@@ -214,3 +214,27 @@ However if you use arrow functions and want access to the react event object you
 
 #### Preventing default action
 You cannot simply return false to prevent the default behaviour of an element. Use `event.preventDefault()`
+
+
+
+
+
+# Udemy Course
+
+We can create html elements using `React.createElement()` or using JSX.
+
+To create a div we can use: `React.createElement('div',null)`
+To create a div with a css class we can use: `React.createElement('div',{className: 'App'})`
+To create nested elements we can use: `React.createElement('div',className: 'App', React.createElement('h1',null,'I am a child node'))`
+
+
+This is the same as the JSX code:  
+```
+ return(
+	<div className="App">
+		<h1>I am a child node</h1>
+	</div>
+ );
+```
+
+JSX needs one root element per component.
