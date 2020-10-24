@@ -308,4 +308,4 @@ augroup dirvish_config
 		\ gh :silent keeppatterns g@\v/\.[^\/]+/?$@d _<cr>:setl cole=3<cr>
 augroup END
 
-inoremap => functionName()=>{}
+inoremap => functionName= () => {}
