@@ -100,4 +100,4 @@ export default Radium(App);
 ```
 
 ## Styled Components - for inline styling of components
-(styled-components.com)[styled-components.com]
+[ styled-components.com ]( styled-components.com )
