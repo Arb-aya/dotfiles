@@ -238,3 +238,16 @@ This is the same as the JSX code:
 ```
 
 JSX needs one root element per component.
+
+
+
+When using the useState hook in functional components, it's important to know that the function returned from useState doesn't merge the new state with the old one. But rather replaces it.
+When passing in arguments to functions passed as props we have two ways:
+
+```
+click={this.foo.bind(this,bar)}
+```
+
+```
+click={()=> this.foo(bar)}
+```

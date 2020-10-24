@@ -307,3 +307,5 @@ augroup dirvish_config
 	autocmd FileType dirvish nnoremap <silent><buffer>
 		\ gh :silent keeppatterns g@\v/\.[^\/]+/?$@d _<cr>:setl cole=3<cr>
 augroup END
+
+inoremap => functionName()=>{}
