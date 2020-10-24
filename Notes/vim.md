@@ -13,6 +13,7 @@ You can delete/change/find upto and excluding a character using `t`. For example
  |Hello World" my name is Arbaya -> `dt"` -> " my name is Arbaya 
 
 ## vim-surround
+`Ctrl + S a` = <>
 `Ctrl + S B `= {}
 `Ctrl + S b `= ()
 `Ctrl + S r `= []
