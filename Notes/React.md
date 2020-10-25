@@ -604,3 +604,17 @@ import Foo from "./foo";
 
 export default d;
 ```
+
+
+There are a number of issues with this approach however. Firstly, the context information is only available where you consume it. Imagine you needed the context data inside of componentDidMount to use with a http request. Secondly, the syntax is a bit verbose and can be difficult to understand when looking at it.
+
+
+### Context alternative for class based components
+Available in react 16.6 and higher:
+
+You can add `static contextType` value. For example `static contextType = Foo;` you can then access the context values via `this.context.bar`.
+
+### Context alternative in functional components
+You can use the useContext hook.
+
+`import React, {useContext} from "react";` you can then set a refernce to it like so: `const fooContext = useContext(Foo);` and to access the values: `fooContext.bar`
