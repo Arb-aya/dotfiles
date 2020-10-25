@@ -106,7 +106,55 @@ return (
 			/>	
 		);
 ```
+You can also add this reference as a class property:
 
+```
+return (
+			<input type="text" 
+			onChange={this.props.change} 
+			ref={(inputEl) => {this.elementReference=inputEl}}
+			/>	
+		);
+```
+
+In react 16.3 and later you can also use references as follows:
+
+```
+import React from "react";
+
+constructor(){
+	super(props);
+	this.inputElement = React.createRef();
+}
+
+return (
+			<input type="text" 
+			onChange={this.props.change} 
+			ref={this.inputElement}
+			/>	
+		);
+```
+
+### Refs with functional components
+
+Import the `useRef` hook from react.
+
+```
+import React {useEffect, useRef} from "react";
+
+const fooBar = (props) => {
+  const pRef = useRef(null); 
+	
+	useEffect(() => {
+		pRef.current.onCopy(...);
+
+	},[]);//remember with no dependencies, this useEffect will only run once.
+	
+
+  return <p ref={fooBar}> foobar </p>;
+};
+
+```
 ## React hooks
 
 ### State hooks for functional components
@@ -120,6 +168,9 @@ click={this.foo.bind(this,bar)}
 ```
 click={()=> this.foo(bar)}
 ```
+### useRef
+
+See above.
 
 ### useEffect
 Has a similar effect to using both componentDidMount and componentDidUpdate
@@ -492,3 +543,63 @@ Take note that we passed the props forward to the wrapped element by using the s
 
 ### Which version should I use?
 Ultimately it is up to you. However, it would be a good idea to separate HOC that affect JSX and HOC that provide behind the scenes logic. Using the first example for those that affect JSXand the second for those that provide "behind the scenes" logic.
+
+## Context - breaking up long props chain
+
+Imagine that we have a piece of state in A, the D needs to use. However, to get the state to D it needs to be passed via components B and C  `A -> B -> C -> D`. In these scenario imagine tthat the data being passed is not relevant to B or C at all. This makes the components B and C more difficult to reuse.
+
+This is the ideal use case for the context API.
+
+You would need to create a context. The createContext method allows you to define pieces of information and which components should be able to access them.
+
+```
+import React from "react";
+
+const foo = React.createContext({bar: true});
+
+export default foo;
+
+```
+
+Then in container A  you would import the context you have created and use it thusly:
+
+```
+import React from "react";
+import Foo from "./foo";
+class A extends React.Component{
+	
+	state = {
+		bar: false,
+	}
+
+	render(){
+		return (
+					<B />
+					<foo.Provider value{{bar: this.state.bar}}>
+						<D /> // wrap the elements that need to access the context
+					</foo.Provider> 
+				);
+	}
+}
+
+```
+
+
+To access this in component D. Note that context.Consumer expects a function as a child, into which the context value(s) is/are passed.
+
+``` 
+	import React from 'react';
+  import Foo from "./foo";
+
+	d = (props) => {
+		return (
+				 {(context) => {
+						 <Foo.Consumer>
+							<p>The value of bar is : {context.bar}</p>;
+						</Foo.Consumer>
+				};
+				);
+	};
+
+	export default d;
+```
