@@ -566,21 +566,22 @@ Then in container A  you would import the context you have created and use it th
 ```
 import React from "react";
 import Foo from "./foo";
-class A extends React.Component{
-	
-	state = {
-		bar: false,
-	}
 
-	render(){
-		return (
-					<B />
-					<foo.Provider value{{bar: this.state.bar}}>
-						<D /> // wrap the elements that need to access the context
-					</foo.Provider> 
-				);
+	class A extends React.Component{
+
+		state = {
+		bar: false,
+		}
+
+		render(){
+			return (
+				<B />
+				<foo.Provider value{{bar: this.state.bar}}>
+					<D /> // wrap the elements that need to access the context
+				</foo.Provider> 
+			);
+		}
 	}
-}
 
 ```
 
@@ -588,18 +589,18 @@ class A extends React.Component{
 To access this in component D. Note that context.Consumer expects a function as a child, into which the context value(s) is/are passed.
 
 ``` 
-	import React from 'react';
-  import Foo from "./foo";
+import React from 'react';
+import Foo from "./foo";
 
 	d = (props) => {
 		return (
-				 {(context) => {
-						 <Foo.Consumer>
-							<p>The value of bar is : {context.bar}</p>;
-						</Foo.Consumer>
-				};
-				);
+			{(context) => {
+				<Foo.Consumer>
+				<p>The value of bar is : {context.bar}</p>;
+				</Foo.Consumer>
+			};
+		);
 	};
 
-	export default d;
+export default d;
 ```
