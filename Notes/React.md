@@ -511,13 +511,13 @@ React then compares an OLD virtual DOM and a Re-rendered Virtual DOM. If differe
 It is usually accepted that HOC filenames being "With" for example "WithFoobar".
 
 ```
- import React from "react";
+import React from "react";
 
- const withFoobar= (props) => (
-			 <div className={props.styles}>props.children</div>
-		 );
+const withFoobar= (props) => (
+	 <div className={props.styles}>props.children</div>
+);
 
- export default withFoobar;
+export default withFoobar;
 ```
 
 Which means that `<div className={styles}> <p> foobar </p> </div>` is the same as `<WithFoobar styles={styles}> <p> foobar </p> </WithFoobar>`. This is a contrived example, but HOC would be useful for adding error handling for components that deal with http requests, for example.
@@ -529,10 +529,10 @@ import React from "react";
 
 const withFoobar = (WrappedComponent, styles) =>{
 	return props => (
-				<div className={styles}>
-				 <WrappedComponent {...props}/>  // this is how you dynamically forward unknown props
-				</div>	
-			);
+		<div className={styles}>
+			<WrappedComponent {...props}/>  // this is how you dynamically forward unknown props
+		</div>	
+	);
 };
 
 ```
