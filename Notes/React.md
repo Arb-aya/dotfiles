@@ -19,8 +19,97 @@ This is the same as the JSX code:
 
 JSX needs one root element per component.
 
+### Rendering Adjacent JSX elements without a root element
+You can return an array of elements with a unique key property.
 
-## State hooks for functional components
+```
+render(){
+	return(
+		<div>
+			<p>foo</p>
+			<p>bar</p>
+		</div>
+	);	
+}
+```
+
+then becomes
+
+```
+render(){
+	return[ 
+		<p key="p1">foo</p>,
+		<p key="p2">bar</p>
+	];	
+}
+
+```
+
+You can also achieve a similar effect by creating a higher order component to wrap your JSX in, but doesn't affect the page structure (like a div)
+
+```
+const aux = props=> props.children;
+export default aux;
+```
+
+Presuming this has been imported the render function would then become:
+
+
+```
+render(){
+	 <Aux>
+		<p key="p1">foo</p>,
+		<p key="p2">bar</p>
+	</Aux>
+}
+
+```
+
+In React versions 16.2 and higher you can use `<React.fragment>` which is a built in version of the aux element demonstrated above. 
+
+## Setting state correctly (when depending on old state)
+Using setState does not ***guarantee*** that an update cycle will be triggered (and therefore render() run) immediately. 
+
+This means that the snippet below might appear to work, but it's behaviour is not guaranteed.
+```
+this.setState({
+  foobar: this.state.foobar + 1	
+});
+```
+
+In cases where you need to achieve this you should use the following syntax:
+
+```
+this.setState((prevState, props) => {
+		return {
+	     foobar: prevState.foobar + 1	
+		};
+});
+```
+## Using proptypes
+These allow you to dictate which props (and their type) your component uses.
+
+These is another package called `prop-types` (npm install --save prop-types)
+
+You then import them into the component you want to use them with: `import PropTypes from "prop-types";`
+
+After your component declaration (either class of functional) you add `componentName.propTypes = { click: PropTypes.func };` to state that you expect a prop of click which is a function.
+
+## Refs
+On any element you can add a special property `ref`. You can pass a fuction that takes one parameter, which is a reference to the element that ref is defined on. For example:
+
+```
+return (
+			<input type="text" 
+			onChange={this.props.change} 
+			ref={(inputEl) => {inputEl.focus()}}
+			/>	
+		);
+```
+
+## React hooks
+
+### State hooks for functional components
 When using the useState hook in functional components, it's important to know that the function returned from useState doesn't merge the new state with the old one. But rather replaces it.
 When passing in arguments to functions passed as props we have two ways:
 
@@ -30,6 +119,61 @@ click={this.foo.bind(this,bar)}
 
 ```
 click={()=> this.foo(bar)}
+```
+
+### useEffect
+Has a similar effect to using both componentDidMount and componentDidUpdate
+
+`import {useEffect} from 'react';`
+
+As a default useEffect takes a function as an argument that will run every render cycle.
+
+#### useEffect as componentDidUpdate
+If you only want to run the function when certain props or state propeties change, you can pass in an array to denote which props / state properties they are.
+
+`useEffect(() => { console.log("foobar");}, [props.foo, props.bar])`
+
+If you wanted different functions to run for different prop changes you can use multiple useEffect calls.
+
+`useEffect(() => { console.log("foo");}, [props.foo])`
+`useEffect(() => { console.log("bar");}, [props.bar])`
+
+#### useEffect as componentDidMount
+If you pass in an empty array of dependencies, the function will run the first time and only the first time.
+
+#### useEffect as componentWillUnmount
+
+You can return a function that is run when the component is unmounted.
+
+```
+import React, {useEffect} from "react";
+
+const Foobar = () => {
+	useEffect(() => {
+		//logic here	
+		return () => { //cleanup work}
+	},[]); // Important to note you need this empty array
+	
+	return (
+		 <p>foobar</p>	
+			);
+}
+```
+
+The example below will run on every update cycle when it has no dependencies or named dependencies.
+```
+import React, {useEffect} from "react";
+
+const Foobar = () => {
+	useEffect(() => {
+		//logic here	
+		return () => { //cleanup work}
+	});
+	
+	return (
+		 <p>foobar</p>	
+			);
+}
 ```
 
 ## Lists of components
@@ -237,7 +381,9 @@ Has the following methods:
 * componentWillUnmount()
 * render() 
 
-### Creation
+Of which the most commonly used are: shouldComponentUpdate, componentDidUpdate and componentDidMount.
+
+### Creation lifecycle
 
 * constructor(props)
 	super(props) must be the first line of the constructor to make sure the object is created properly.
@@ -257,4 +403,92 @@ Has the following methods:
  * componentWillMount()
    This will be removed in future. Work that can be done here is typically done in getDerivedStateFromProps or the constructor.
 
+### Update lifecycle 
 
+ * getDerivedStateFromProps(props,state)
+   See notes above. 
+
+ * **shouldComponentUpdate(nextProps, nextState)**
+
+   Decide whether or not to continue updating. Must return a boolean.
+	 ```shouldComponentUpdate(nextProps, nextState){
+				return (nextProps.foobar !== this.props.foobar); 
+	 }
+	 ```
+
+   Given that this method only belongs to class components, you can achieve the same with functional components by wrapping the export in a call to `React.memo`
+	 `export default React.memo(foobar);`
+
+ * render()
+
+ * Update child components
+
+ * getSnapShotBeforeUpdate(prevProps,prevState)
+
+ * componentDidUpdate()
+   Similar notes to componentDidMount.
+
+### Destruction lifecycle
+
+ * componentWillUnmount()
+   Used to close any external dependencies / event listeners / timers attached to a component that is unmounted.
+
+
+## When to optimise?
+Given we now know that you can optimise the update lifecycle of class and functional components via shouldComponentUpdate and React.memo respectively, it is a good idea to discuss when youshould use them.
+
+If a child prop should always update when their parent updates, using the aforementioned methods can result in needless calls.
+
+Basically, if I don't need to update when my parent does then use these methods.
+
+
+### PureComponents - an alternative to shouldComponentUpdate
+If you want to use shouldComponentUpdate to check if any of the props supplied to a class component have changed you would need to write a lengthy if statement to check them all. There is a better alternative. 
+
+You can extend a PureComponent instead of Component.  `class foobar extends React.PureComponent`
+
+PureComponent automatically provides a shouldComponentUpdate that checks for changes in all props.
+
+
+## How does React update the DOM
+
+render() is called.
+
+React then compares an OLD virtual DOM and a Re-rendered Virtual DOM. If differences are found, it updates the "real" DOM, only updating the elements that have changed. If no differences are found, the "real" DOM is left untouched.
+
+## Higher Order Component
+It is usually accepted that HOC filenames being "With" for example "WithFoobar".
+
+```
+ import React from "react";
+
+ const withFoobar= (props) => (
+			 <div className={props.styles}>props.children</div>
+		 );
+
+ export default withFoobar;
+```
+
+Which means that `<div className={styles}> <p> foobar </p> </div>` is the same as `<WithFoobar styles={styles}> <p> foobar </p> </WithFoobar>`. This is a contrived example, but HOC would be useful for adding error handling for components that deal with http requests, for example.
+
+Another way of creating HOC:
+
+```
+import React from "react";
+
+const withFoobar = (WrappedComponent, styles) =>{
+	return props => (
+				<div className={styles}>
+				 <WrappedComponent {...props}/>  // this is how you dynamically forward unknown props
+				</div>	
+			);
+};
+
+```
+To use this: `export default withFoobar(App,App.styles)`
+
+Take note that we passed the props forward to the wrapped element by using the spread operator.
+
+
+### Which version should I use?
+Ultimately it is up to you. However, it would be a good idea to separate HOC that affect JSX and HOC that provide behind the scenes logic. Using the first example for those that affect JSXand the second for those that provide "behind the scenes" logic.
