@@ -1,0 +1,48 @@
+{
+  "session_name": "0",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "server",
+      "layout": "bbbd,192x53,0,0,0",
+      "panes": [
+        {
+          "shell_command": "bash",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/React/burgerbuilder"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "code",
+      "layout": "bbbe,192x53,0,0,1",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/React/burgerbuilder"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "notes",
+      "layout": "bbbf,192x53,0,0,2",
+      "panes": [
+        {
+          "shell_command": "nvim ~/Documents/Notes/React.md",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/React/burgerbuilder"
+    }
+  ]
+}

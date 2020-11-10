@@ -10,3 +10,8 @@ alias dev-update='$HOME/Documents/Scripts/update.sh'
 
 alias wally='$HOME/Wally/wally-cli'
 alias sizzy='$HOME/Sizzy/Sizzy-0.37.0.AppImage'
+
+alias r='ranger'
+
+alias ..='cd ..'
+alias gap='git add -p'

@@ -7,6 +7,7 @@
 
 call plug#begin('~/.local/share/nvim/plugged')
 
+Plug 'glacambre/firenvim', {'do': {_ -> firenvim#install(0)}}
 Plug 'justinmk/vim-dirvish'
 
 "commenting/uncommenting
@@ -22,8 +23,14 @@ Plug 'tpope/vim-repeat'
 " show git symbols in the gutter
 Plug 'airblade/vim-gitgutter'
 
+" snippets
+" requires coc-snippets to be installed
+Plug 'honza/vim-snippets'
+
 "theme 
 Plug 'morhetz/gruvbox'
+
+Plug 'rrethy/vim-hexokinase', { 'do':'make hexokinase' }
 
 "LSP
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -53,6 +60,8 @@ let mapleader = ","
 "Don't want no swap, a swap is the kinda file that don't get no love from me
 set noswapfile
 
+set textwidth=70
+
 " TAB management
 " tabstop = how many columns a tab counts for
 "
@@ -72,10 +81,10 @@ set noswapfile
 "  If expandtab is set vim will always use the appropriate number of spaces
 "
 set softtabstop=0
-set tabstop=2 
-set shiftwidth=2 
+set tabstop=4 
+set shiftwidth=4 
 set autoindent
-autocmd Filetype python setlocal tabstop=4 shiftwidth=4 
+set smarttab
 
 set hidden  "Hides buffers instead of closing them.
 						"needed for renaming symbols using language servers
@@ -161,31 +170,6 @@ syntax on
 "vim to use
 let g:python3_host_prog = '~/.pyenv/versions/neovim3/bin/python'
 
-"#################################################################################################### 
-"###                                                                                              ###
-"###                                          THEME                                               ###
-"###                                                                                              ###
-"#################################################################################################### 
-
-if (has("nvim"))
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-endif
-
-if( has("termguicolors"))
-    set termguicolors
-endif
-
-let g:gruvbox_contrast_dark='hard'
-colorscheme gruvbox
-
-"Change the background of inactive panes
-"https://jdhao.github.io/2020/09/22/highlight_groups_cleared_in_nvim/
-augroup custom_highlight
-  autocmd!
-  au ColorScheme * highlight MyNormalNC ctermbg=235 guibg=#282828
-augroup END
-
-set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
 
 "#################################################################################################### 
 "###                                                                                              ###
@@ -221,8 +205,16 @@ let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
 "Coc extensions to install when you use vim. Easier to list them here and then
 "forget about them. Use :CocList extensions to manage them (press tab on an
 "extension for options)
-let g:coc_global_extensions = ['coc-tsserver','coc-eslint','coc-highlight', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-python', 'coc-prettier']
+let g:coc_global_extensions = ['coc-tsserver','coc-highlight', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-python']
 
+" Conditional loading of prettier and eslint
+if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+	 let g:coc_global_extensions += ['coc-prettier']
+ endif
+
+if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+	 let g:coc_global_extensions += ['coc-eslint']
+ endif
 " I disable coc-highlight for javascript so I can use other plugins for
 " those filetypes. Provides a better experience for react.
 " This is done by adding: highlight.disableLanguages":["javascript"] to
@@ -261,14 +253,23 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+"Press K to see documentation for word under cursor
+nnoremap <silent> K :call CocAction('doHover')<CR>
+
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * call CocActionAsync('highlight')
 
 " Rename symbol under the cursor
 nmap <leader>rn <Plug>(coc-rename)
 
+"Fix issue under cursor
+nmap <leader>do <Plug>(coc-codeaction)
+
 " Work around for coc-python not running isort on save
-autocmd BufWrite *.py :CocCommand python.sortImports
+"autocmd BufWrite *.py :CocCommand python.sortImports
+"
+" Use <C-j> for select text for visual placeholder of snippet.
+vmap <C-j> <Plug>(coc-snippets-select)
 
 "#################################################################################################### 
 "###                                                                                              ###
@@ -287,26 +288,42 @@ let g:vim_jsx_pretty_highlight_close_tag = 0
 "###                                          DIRVISH                                             ###
 "###                                                                                              ###
 "#################################################################################################### 
-augroup dirvish_config
-	autocmd!
+" o = new horizontal split
+" a = new split
 
-	" Map `t` to open in new tab.
-	autocmd FileType dirvish
-		\  nnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
-		\ |xnoremap <silent><buffer> t :call dirvish#open('tabedit', 0)<CR>
+"################################################################################################### 
+"###                                                                                              ###
+"###                                          THEME                                               ###
+"###                                                                                              ###
+"#################################################################################################### 
 
-	autocmd FileType dirvish
-		\  nnoremap <silent><buffer> s :call dirvish#open('split', 0)<CR>
-		\ |xnoremap <silent><buffer> s :call dirvish#open('split', 0)<CR>
+if (has("nvim"))
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
 
-	" Map `gr` to reload.
-	autocmd FileType dirvish nnoremap <silent><buffer>
-		\ gr :<C-U>Dirvish %<CR>
+if( has("termguicolors"))
+    set termguicolors
+endif
 
-	" Map `gh` to hide dot-prefixed files.  Press `R` to "toggle" (reload).
-	autocmd FileType dirvish nnoremap <silent><buffer>
-		\ gh :silent keeppatterns g@\v/\.[^\/]+/?$@d _<cr>:setl cole=3<cr>
+
+"Change the background of inactive panes
+"https://jdhao.github.io/2020/09/22/highlight_groups_cleared_in_nvim/
+augroup custom_highlight
+  autocmd!
+  au ColorScheme * highlight MyNormalNC ctermbg=235 guibg=#282828
 augroup END
 
-inoremap <leader>naf functionName= () => {};
-inoremap <leader>af () => {};
+set winhighlight=Normal:MyNormal,NormalNC:MyNormalNC
+
+let g:gruvbox_contrast_dark='hard'
+colorscheme gruvbox
+
+let g:Hexokinase_highlighers = ['virtual']
+let g:Hexokinase_optInPatterns = 'full_hex,rgb,rgba,hsl,hsla,colour_names'
+
+
+nnoremap <buffer> <leader>am :ArduinoVerify<CR>
+nnoremap <buffer> <leader>au :ArduinoUpload<CR>
+nnoremap <buffer> <leader>ad :ArduinoUploadAndSerial<CR>
+nnoremap <buffer> <leader>ab :ArduinoChooseBoard<CR>
+nnoremap <buffer> <leader>ap :ArduinoChooseProgrammer<CR>

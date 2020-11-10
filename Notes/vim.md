@@ -36,3 +36,9 @@ Use `:Shdo` to modify selected file paths and `Z!` or `!%` to execute it
 `a` to open file in new vertical split
 `t` in new tab
 `h` in new horizontal split
+`:vs .` better way to open files in splits
+
+
+## General vim commands
+Highlight text and use gq to format it. Set line length in vimrc with
+set textwidth

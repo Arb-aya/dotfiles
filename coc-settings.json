@@ -1,11 +1,22 @@
 {
     "coc.preferences.jumpCommand":"vsplit",
-    "coc.preferences.formatOnSaveFiletypes": ["python","javascript"],
+    "coc.preferences.formatOnSaveFiletypes": ["javascript","javascriptreact"],
+		"coc.preferences.formatOnType":true,
+		"tsserver.formatOnType":true,
     "highlight.disableLanguages":["javascript"],
     "python.jediEnabled": false,
-    "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "yapf",
-    "python.sortImports.path": "isort",
-		"eslint.options": {"configFile":"/home/kit/.eslintrc.json"}
+    "python.linting.pylintEnabled": false,
+    "python.linting.enabled": false,
+		"eslint.filetypes": [
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"typescriptreact"
+		],
+		"eslint.autoFixOnSave": true,
+		"prettier.disableSuccessMessage":true,
+		"prettier.singleQuote":true,
+		"snippets.extends":{
+			"javascriptreact":["javascript"]
+		}
 }

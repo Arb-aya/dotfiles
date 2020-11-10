@@ -1,0 +1,62 @@
+{
+  "session_name": "0",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "python server",
+      "layout": "bbbd,192x53,0,0,0",
+      "panes": [
+        {
+          "shell_command": "npm run-script start-api",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/milestone3"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "react server",
+      "layout": "bbc0,192x53,0,0,3",
+      "panes": [
+        {
+          "shell_command": "npm start",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/milestone3"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "code",
+      "layout": "bbbf,192x53,0,0,2",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/milestone3/"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "git",
+      "layout": "bbbe,192x53,0,0,1",
+      "panes": [
+        {
+          "shell_command": "bash",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/milestone3"
+    }
+  ]
+}
