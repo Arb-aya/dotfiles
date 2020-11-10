@@ -62,23 +62,26 @@ set noswapfile
 
 set textwidth=70
 
+set colorcolumn=71
 " TAB management
 " tabstop = how many columns a tab counts for
 "
-" expandtab = pressing tab in insert mode will produce the appropriate number
-" of spaces
+" expandtab = pressing tab in insert mode will produce tht appropriate
+" number of spaces
 "
 "shiftwidth = control how many columns text is affected by with << >> 
 "
-"softabstop = how many columns vim uses when tab is used in insert mode 
-"  if softtab is less than tabstop and expand is NOT set vim uses a combination
+"softabstop = how many columns vim uses when tab is used in insert
+"mode if softtab is less than tabstop and expand is NOT set vim uses a
+"combination
 "  of tabs and spaces to make up the desired spacing.
 "
 "
-"  if softtab is equal to tabstop and extandtab is not set vim will always use
-"  tabs
+"  if softtab is equal to tabstop and extandtab is not set vim will
+"  always use tabs
 "
-"  If expandtab is set vim will always use the appropriate number of spaces
+"  If expandtab is set vim will always use the appropriate number of
+"  spaces
 "
 set softtabstop=0
 set tabstop=4 
