@@ -2,7 +2,7 @@
 
 To make the current line go to the top of the view: `zt`
 
-To go back to the previously open buffer: `Ctrl + 6`
+To go back to the previously open buffer: `Ctrl + ^`
 
 You can delete/change/find upto and including a character using `f`. For example presuming | is cursor:
  
@@ -42,3 +42,15 @@ Use `:Shdo` to modify selected file paths and `Z!` or `!%` to execute it
 ## General vim commands
 Highlight text and use gq to format it. Set line length in vimrc with
 set textwidth
+
+Search and replace:
+
+:s/pattern/string/
+
+all patterns found:
+
+:s/pattern/string/g
+
+To search the whole file:
+
+:%s/pattern/string/g

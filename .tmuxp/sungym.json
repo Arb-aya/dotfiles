@@ -1,0 +1,20 @@
+{
+  "session_name": "sungym",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "vim",
+      "layout": "b25d,80x24,0,0,0",
+      "panes": [
+        {
+          "shell_command": "vim",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/Python/sungym"
+    }
+  ]
+}

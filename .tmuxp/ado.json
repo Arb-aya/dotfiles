@@ -1,0 +1,34 @@
+{
+  "session_name": "ado",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "Code",
+      "layout": "bbbd,192x53,0,0,0",
+      "panes": [
+        {
+          "shell_command": "vim",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/ado"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "server",
+      "layout": "bbbe,192x53,0,0,1",
+      "panes": [
+        {
+          "shell_command": "bash",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/Python/ado"
+    }
+  ]
+}

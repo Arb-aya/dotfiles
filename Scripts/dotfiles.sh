@@ -3,16 +3,12 @@
 back_up_dir="$HOME/Documents/dotfiles/"
 
 make_backup(){
-    printf "Backing up init.vim..."
-    cp $HOME/.config/nvim/init.vim $back_up_dir
+    printf "Backing up init.lua..."
+    cp  $HOME/.config/nvim/init.lua $back_up_dir
+    printf "Backing up nvim/lua..."
+    cp -r $HOME/.config/nvim/lua $back_up_dir
     printf $?
     printf "\n"
-
-    printf "Backing up coc-settings.json..."
-    cp $HOME/.config/nvim/coc-settings.json $back_up_dir
-    printf $?
-    printf "\n"
-
 
     printf "Backing up ./tmuxp..."
     cp -r $HOME/.tmuxp/ $back_up_dir

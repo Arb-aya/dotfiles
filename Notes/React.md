@@ -617,4 +617,4 @@ You can add `static contextType` value. For example `static contextType = Foo;` 
 ### Context alternative in functional components
 You can use the useContext hook.
 
-`import React, {useContext} from "react";` you can then set a refernce to it like so: `const fooContext = useContext(Foo);` and to access the values: `fooContext.bar`
+`import React, {useContext} from "react";` you can then set a reference to it like so: `const fooContext = useContext(Foo);` and to access the values: `fooContext.bar`

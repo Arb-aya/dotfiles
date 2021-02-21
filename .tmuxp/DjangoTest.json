@@ -1,0 +1,48 @@
+{
+  "session_name": "DjangoTest",
+  "windows": [
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "vim",
+      "layout": "bbbe,192x53,0,0,1",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "focus": "true",
+      "start_directory": "/home/kit/Documents/Python/DjangoTest"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "django notes",
+      "layout": "bbbf,192x53,0,0,2",
+      "panes": [
+        {
+          "shell_command": "nvim",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Notes"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "server",
+      "layout": "bbc0,192x53,0,0,3",
+      "panes": [
+        {
+          "shell_command": "bash",
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/DjangoTest"
+    }
+  ]
+}
