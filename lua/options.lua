@@ -22,6 +22,7 @@ o.swapfile = false
 o.mouse = 'n' --don't show beginbot this
 o.joinspaces = true
 o.syntax = 'on'
+o.completeopt = "menuone,noselect" -- For nvim-compe
 
 -- Window-local options
 wo.number 	= true

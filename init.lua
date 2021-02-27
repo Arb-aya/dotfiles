@@ -1,13 +1,15 @@
+-- All confiugration done in lua has been blatently stolen or bastardised from:
+-- 1. tjdevries config manager https://github.com/tjdevries/config_manager
+-- 2. the readme of the plugins listed in plugins.lua
+
 vim.g.mapleader = ","
 
--- Is there a more lua-y way to do this?
-vim.cmd('let g:python3_host_prog="~/.pyenv/versions/neovim3/bin/python"')
+vim.g.python3_host_prog="~/.pyenv/versions/neovim3/bin/python"
 
-require('options')
-require('mappings')
-require('plugins')
+require'options'
+require'mappings'
+require'plugins'
+require'lsp'
 
--- Is there a more lua-y way to do this?
-vim.cmd(':colo gruvbox')
-vim.cmd('let g:gruvbox_contrast_dark="hard"')
-
+vim.cmd('colorscheme gruvbox')
+vim.g.gruvbox_contrast_dark='hard'

@@ -11,6 +11,7 @@ Then to run the project in the project directory:
 You will need to create a superuser for the sqlite db django creates
 for you: `maange.py createsuperuser`
 
+
 ## Migrations
 Make migrations based on newly created models: 
 `manage.py makemigrations`
@@ -23,7 +24,15 @@ To apply migrations:
 `manage.py migrate`
 You can use the `-plan` flag to see what will happen
 
-## Django Apps 
+## Fixtures
+A quick and easy way to load data into your database. Create a folder named
+`fixtures` in your app and in there two data files (for example JSON).
+
+The fixture data must match models that are available in the app.
+
+To use a fixture file: `manage.py loaddata <fixture file name>`
+
+## Django Apps
 Django components are referred to as "apps". Apps can be installed
 into your project. For example, an app that handles login and
 user authentication.
@@ -33,14 +42,14 @@ user authentication.
 `python manage startapp <app_name>`
 
 This will then create the directory `app_name` in which you can manage
-the views, models and controller logic. 
+the views, models and controller logic.
 
 To use an app in your django project you will need to register it in
 `settings.py`, in  `INSTALLED_APPS`.
 
 #### Views
 
-Views in django are functions that accept HTTP requests. If you want 
+Views in django are functions that accept HTTP requests. If you want
 to return a http response you will need to import httpresponse from
 django shortcuts: `from django.shortcuts import HttpResponse` and use
 it like so:
