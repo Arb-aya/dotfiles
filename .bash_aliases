@@ -1,4 +1,6 @@
 alias vim='$HOME/nvim/nvim.appimage'
+alias nvim='$HOME/nvim/nvim.appimage'
+
 alias vv='nvim $HOME/.config/nvim/init.vim'
 alias ba='nvim $HOME/.bash_aliases'
 alias br='source $HOME/.bashrc'

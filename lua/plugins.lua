@@ -1,4 +1,3 @@
-
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function()
@@ -11,10 +10,14 @@ return require('packer').startup(function()
 		{
 			{'nvim-lua/popup.nvim'},
 			{'nvim-lua/plenary.nvim'}
-		}
+		},
+        filetypes = {'typescript', 'javascriptreact', 'typescriptreact', 'json', 'html', 'css', 'python'},
 	}
 
+
     use 'hrsh7th/nvim-compe' -- autocomplete
+
+    --use { 'rafi/vim-venom', ft={"python"} }
 
     use 'SirVer/ultisnips'
     use 'honza/vim-snippets'
@@ -38,5 +41,7 @@ return require('packer').startup(function()
     use 'godlygeek/tabular'
 
     use 'preservim/nerdcommenter'
+
+    --use 'mattn/efm-langserver'
 
 end)

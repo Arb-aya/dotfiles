@@ -10,10 +10,10 @@ map('n',',,','<esc>:w!<cr>',{noremap=true,silent=true})
 map('i', 'jk', '<esc>', {noremap=true})
 
 -- Navigate splits
-map('n', '<C-J>', '<C-W><C-J>', {noremap=true})
-map('n', '<C-K>', '<C-W><C-K>', {noremap=true})
-map('n', '<C-L>', '<C-W><C-L>', {noremap=true})
-map('n', '<C-H>', '<C-W><C-H>', {noremap=true})
+--map('n', '<C-J>', '<C-W><C-J>', {noremap=true})
+--map('n', '<C-K>', '<C-W><C-K>', {noremap=true})
+--map('n', '<C-L>', '<C-W><C-L>', {noremap=true})
+--map('n', '<C-H>', '<C-W><C-H>', {noremap=true})
 
 
 -- Tabularize
@@ -77,8 +77,7 @@ map("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 map("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 
 -- Might as well use the arrow keys for something...
-vim.cmd('let g:UltiSnipsExpandTrigger="<UP>"')
-
+vim.g.UltiSnipsExpandTrigger="<UP>"
 
 --
 -- Telescope

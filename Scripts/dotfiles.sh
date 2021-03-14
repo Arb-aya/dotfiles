@@ -5,8 +5,14 @@ back_up_dir="$HOME/Documents/dotfiles/"
 make_backup(){
     printf "Backing up init.lua..."
     cp  $HOME/.config/nvim/init.lua $back_up_dir
+
     printf "Backing up nvim/lua..."
     cp -r $HOME/.config/nvim/lua $back_up_dir
+    printf $?
+    printf "\n"
+
+    printf "Backup up efm-langserver config ..."
+    cp $HOME/.config/efm-langserver/config.yaml $back_up_dir
     printf $?
     printf "\n"
 

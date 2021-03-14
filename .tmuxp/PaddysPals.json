@@ -1,5 +1,5 @@
 {
-  "session_name": "ado",
+  "session_name": "Paddy's Pals",
   "windows": [
     {
       "options": {
@@ -10,11 +10,11 @@
       "layout": "bbbd,192x53,0,0,0",
       "panes": [
         {
-          "shell_command": ["pyenv shell ado", "vim"],
+          "shell_command": ["pyenv shell PaddysPals", "vim"],
           "focus": "true"
         }
       ],
-      "start_directory": "/home/kit/Documents/Python/ado"
+      "start_directory": "/home/kit/Documents/Python/PaddysPals "
     },
     {
       "options": {
@@ -24,12 +24,12 @@
       "layout": "bbbe,192x53,0,0,1",
       "panes": [
         {
-          "shell_command": ["pyenv shell ado", "python3 manage.py runserver"],
+          "shell_command": "flask fun",
           "focus": "false"
         }
       ],
       "focus": "true",
-      "start_directory": "/home/kit/Documents/Python/ado"
+      "start_directory": "/home/kit/Documents/Python/PaddysPals"
     }
   ]
 }

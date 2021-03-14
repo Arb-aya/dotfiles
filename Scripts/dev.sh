@@ -17,7 +17,7 @@ setup_python_project(){
         $can_create_venv=false
     fi
 
-    #Check we have pyenv installed
+    #Check we have pyenv virtualenv installed
     if [[ ! -x "$(command -v pyenv virtualenv)" ]]; then
         printf "pyenv virtualenv not found...\n"
         $can_create_venv=false
