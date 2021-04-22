@@ -17,9 +17,15 @@ return require('packer').startup(function()
 
     use 'hrsh7th/nvim-compe' -- autocomplete
 
-    --use { 'rafi/vim-venom', ft={"python"} }
+    --use { 'nvim-treesitter/nvim-treesitter',
+               --run = function() vim.cmd [[TSUpdate]] end}
+
+	   -- Generate documentation for function under cursor via <leader>d
+    use { 'kkoomen/vim-doge',
+    	   run = function() vim.cmd [[call doge#install()]] end}
 
     use 'SirVer/ultisnips'
+
     use 'honza/vim-snippets'
 
     use 'neovim/nvim-lspconfig'

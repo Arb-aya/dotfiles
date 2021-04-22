@@ -132,3 +132,11 @@ class Meta:
 	fields = ['foo','bar']
 ```
 
+How do we validate these? etc
+
+### To look at:
+    json_script template filter
+    pillow
+    crispy_forms
+
+

@@ -9,9 +9,10 @@ vim.g.python3_host_prog="~/.pyenv/versions/neovim3/bin/python"
 vim.cmd('colo gruvbox')
 vim.g.gruvbox_contrast_dark='hard'
 
-require'options'
 require'mappings'
 require'plugins'
 require'lsp'
+--require'treesitter'
+require'options'
 
 

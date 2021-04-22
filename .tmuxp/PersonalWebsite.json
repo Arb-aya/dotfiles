@@ -1,0 +1,43 @@
+{
+  "session_name": "Personal Website",
+  "windows": [
+    {
+      "options": {},
+      "window_name": "nvim",
+      "layout": "bbbd,192x53,0,0,0",
+      "panes": [
+        {
+          "shell_command": ["pyenv shell PersonalWebsite", "nvim"],
+          "focus": "true"
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/PersonalWebsite"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "console",
+      "layout": "bbbe,192x53,0,0,1",
+      "panes": [
+        {
+          "shell_command": [ "pyenv shell PersonalWebsite", "python manage.py runserver" ]
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/PersonalWebsite"
+    },
+    {
+      "options": {
+        "automatic-rename": "off"
+      },
+      "window_name": "console",
+      "layout": "bbbe,192x53,0,0,1",
+      "panes": [
+        {
+          "shell_command": [ "pyenv shell PersonalWebsite", "sass --watch static/sass:static/css" ]
+        }
+      ],
+      "start_directory": "/home/kit/Documents/Python/PersonalWebsite"
+    }
+  ]
+}

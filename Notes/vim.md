@@ -1,3 +1,5 @@
+vim-hardtime to learn to navigate buffers better
+
 # Nvim
 
 To make the current line go to the top of the view: `zt`
@@ -38,6 +40,18 @@ Use `:Shdo` to modify selected file paths and `Z!` or `!%` to execute it
 `h` in new horizontal split
 `:vs .` better way to open files in splits
 
+## Tabularize
+
+`<leader>a=` - Align on =
+`<leader>a:` - Align on :
+
+## Telescope
+
+`<leader>ff` - Find files
+`<leader>fg` - live grep
+`<leader>fb` - find buffers
+`<leader>fg` - find help tags
+
 
 ## General vim commands
 Highlight text and use gq to format it. Set line length in vimrc with
@@ -54,3 +68,22 @@ all patterns found:
 To search the whole file:
 
 :%s/pattern/string/g
+
+
+# Get under your fingers:
+
+## Learn about fold and use them
+
+## Learn about tags and use them
+
+## Tabularize
+
+`<leader>a=` - Align on =
+`<leader>a:` - Align on :
+
+## Telescope
+
+`<leader>ff` - Find files
+`<leader>fg` - live grep
+`<leader>fb` - find buffers
+`<leader>fg` - find help tags

@@ -78,9 +78,11 @@ nvim_lsp.efm.setup({
     filetypes = {
         "python",
         "html",
+        "htmldjango",
         "javascript",
         "javascriptreact",
-        "css"
+        "css",
+        "scss"
     },
     settings = {
         rootMarkers = {
