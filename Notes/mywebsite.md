@@ -1,15 +1,62 @@
+ * Create Item shop
+    * Search and filter for items
 
-TODO:
+---------------------------
+ * Inventory - show item information somehow
+                - feedback to user when we couldn't save to db
 
- * Inventory.js
-	- filters: By slot / By type
+ * Create bag
 
- * make display character form look better at bigger responsive breakpoints
+ * Create checkout
 
- * Finish styling forms: namely buttons.
+ * Implement stripe payments
+
+
+---------------------------
+ * Deploy the site
+
+---------------------------
+ * Do Readme
+    * Colour pallete
+    * Screen shot in sizzy
+
+ L01
+    All criteria met, need to document manual testing done.
+
+ L02
+    * Create relational database schema
+    * One form with validation that will allow users to create records in the database (mine doesn't create records)
+
+ L03
+    * Authentication mechanism, allowing user to register and login (using twitch channel). Addressing a clear reason why the users need to.
+    * Login/Registration forms displayed to anonymous users.
+    * Non-admin users are not able to access the data store
+        If non superuser goes to admin login, redirect them to the last page.
+
+ L04
+    * Implement sometime of online payment system using stripe. Can be One time payments.
+    * Feedback system that reports successful / unsuccessful purchases to the user.
+
+ L05
+    * Deploy the site
+    * No commented out code, no broken internal links
+    * Security:
+        Use env variables, no secret keys in the github repo
+        Debug mode is off
+    * Create README
+    * Fully describe data scheme
+        - relational db diagram
+        - diagram explaining front-end javascript
+
+
+
+ * Create Blog?
+
+
 
 Potential bugs/features?
-	Sometimes when saving changes to the traits, the new value is saved incorrectly (namely as the number of points spent, rather than the default value + number of points spent). Haven't been able to reproduce this yet. Happened with the MP trait.
+Sometimes when logging in with twitch account, the user is presented with a black and white box that causes the login to fail. Retrying to login after this works. I'm not sure 
+why this happens.
 
 -------
 Resources used
@@ -26,13 +73,26 @@ https://cssgenerator.org/box-shadow-css-generator.html
 Konva drag and drop:
 https://codepen.io/pierrebleroux/pen/gGpvxJ
 
+color.review
+
+https://cssgradient.io/
+
+https://autoprefixer.github.io/
 -------
 Technologies used
 --------
-Konva
-Bootstrap
+Python
+HTML 5
 SASS
+CSS 3
+Javascript (ES6)
+Konva.js
+Bootstrap
 Django
+Sizzy
+Neovim
+
+
 
 Website ideas:
 

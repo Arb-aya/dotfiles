@@ -127,7 +127,7 @@ project_path="$HOME/Documents/$language/$project/"
             exit 0
         fi
     fi
-    
+
     cd $project_path
     init_git
 
@@ -143,11 +143,11 @@ project_path="$HOME/Documents/$language/$project/"
             else
                 tmuxp load "$HOME/.tmuxp/$project.json" && printf "\n"
             fi
-        else 
+        else
             cd $project_path
             tmux new -d -s $project -n vim "vim"
             tmuxp freeze $project
-            
+
         fi
     else
         printf "false\n"

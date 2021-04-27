@@ -6,13 +6,13 @@ vim.g.mapleader = ","
 vim.g.python3_host_prog="~/.pyenv/versions/neovim3/bin/python"
 
 -- Need to set colorscheme before LSP stuff happens
-vim.cmd('colo gruvbox')
-vim.g.gruvbox_contrast_dark='hard'
+vim.cmd('colo edge')
 
-require'mappings'
-require'plugins'
-require'lsp'
---require'treesitter'
-require'options'
+require('arbaya.options')
+require('arbaya.mappings')
+require('arbaya.plugins')
+require('arbaya.lsp')
+require('arbaya.treesitter')
 
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
 

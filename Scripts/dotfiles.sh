@@ -41,7 +41,7 @@ make_backup(){
 
     read -n 1 ans
     printf "\n"
-    
+
     if [[ $ans == "y" || $ans == "Y" ]];then
         cd $back_up_dir
         git add .

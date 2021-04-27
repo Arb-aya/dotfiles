@@ -1,3 +1,18 @@
+# Get under your fingers:
+
+<leader> q - To see errors and warnings in file
+<leader> ca - To run code actions
+
+[c - Previous hunk
+]c - Next hunk
+<leader> hs - stage hunk
+<leader> hu - undo stage hunk
+<leader> hR - reset buffer
+<leader> hp - preview hunk
+<leader> hb - blame line
+
+
+# Suggestions
 vim-hardtime to learn to navigate buffers better
 
 # Nvim
@@ -44,6 +59,7 @@ Use `:Shdo` to modify selected file paths and `Z!` or `!%` to execute it
 
 `<leader>a=` - Align on =
 `<leader>a:` - Align on :
+`<leader>a-` - Align on -
 
 ## Telescope
 
@@ -70,20 +86,3 @@ To search the whole file:
 :%s/pattern/string/g
 
 
-# Get under your fingers:
-
-## Learn about fold and use them
-
-## Learn about tags and use them
-
-## Tabularize
-
-`<leader>a=` - Align on =
-`<leader>a:` - Align on :
-
-## Telescope
-
-`<leader>ff` - Find files
-`<leader>fg` - live grep
-`<leader>fb` - find buffers
-`<leader>fg` - find help tags
