@@ -4,8 +4,7 @@ return require('packer').startup(function()
 
     use {'wbthomason/packer.nvim', opt = true}
 
-    use 'kosayoda/nvim-lightbulb'
-
+    --Find what you need
     use {
 	'nvim-telescope/telescope.nvim',
 	requires =
@@ -16,9 +15,7 @@ return require('packer').startup(function()
         filetypes = {'typescript', 'javascriptreact', 'typescriptreact', 'json', 'html', 'css', 'python'},
 	}
 
-
-    use 'hrsh7th/nvim-compe' -- autocomplete
-
+    --Better syntax highlighting
     use { 'nvim-treesitter/nvim-treesitter',
                run = function() vim.cmd [[TSUpdate]] end}
 
@@ -27,42 +24,79 @@ return require('packer').startup(function()
     	   run = function() vim.cmd [[call doge#install()]] end
        }
 
+
+   --Git signs in the gutter and hunk management in buffer
    use{
        'lewis6991/gitsigns.nvim',
        requires = {
            'nvim-lua/plenary.nvim'
        },
        config = function()
-           require('gitsigns').setup()
+           require('gitsigns').setup({
+               signs = {
+                   add = {hl = 'GitGutterAdd', text="+"},
+                   change = {hl = 'GitGutterChange', text="~"},
+                   delete ={hl = 'GitGutterDelete', text="_+"},
+                   topdelete = {hl = 'GitGutterDelete', text="‾"},
+                   changedelete = {hl = 'GitGutterChange', text="~"},
+               }
+           })
        end
    }
 
-    use 'SirVer/ultisnips'
+    --Used for completion
+    use 'hrsh7th/nvim-compe'
+   -- Snippets
+    use 'hrsh7th/vim-vsnip'
+    use 'hrsh7th/vim-vsnip-integ'
 
-    use 'honza/vim-snippets'
-
+    --LPS stuff. This means I can just say:
+    --:LspInstall python/html/css/typescript
     use 'neovim/nvim-lspconfig'
+    use 'kabouzeid/nvim-lspinstall'
+
+    --Show indent levels on blank lines
+    use {'lukas-reineke/indent-blankline.nvim',branch = 'lua'}
+
 
     use 'bronson/vim-trailing-whitespace'
-
     use 'machakann/vim-highlightedyank'
 
+    --File traversal
     use 'justinmk/vim-dirvish'
 
+    --The best
     use 'tpope/vim-surround'
-
     use 'tpope/vim-repeat'
 
-    use 'yamatsum/nvim-cursorline'
-
+    --colourscheme
     use 'sainnhe/edge'
 
+    --matching brackets
     use 'frazrepo/vim-rainbow'
 
+    --Make stuff look good
     use 'godlygeek/tabular'
 
     use 'preservim/nerdcommenter'
 
-    --use 'mattn/efm-langserver'
+    --Highlight instances of token under cursor
+    use 'yamatsum/nvim-cursorline'
 
+    --Debugging
+    use 'mfussenegger/nvim-dap'
+    use 'mfussenegger/nvim-dap-python'
+
+    --Fancy windows for lsp information
+    use 'RishabhRD/popfix'
+    use 'RishabhRD/nvim-lsputils'
+
+    --Markdown preview
+    use {
+        'iamcco/markdown-preview.nvim',
+        run = function() vim.fn['mkdp#util#install']() end
+    }
+
+    --If I don't show off I'm using nvim in discord, who will know I am using nvim?
+    use 'andweeb/presence.nvim'
 end)

@@ -1,37 +1,44 @@
+ * Change twitch app on success login URL to /MUD not /Character
+
  * Create Item shop
-    * Search and filter for items
+    * filter for items
+        * Rarity
+        * Slot type
+        * Item type
+        * Cost
 
+    * Give users the chance to buy gold
+         * Create checkout
+         * Implement stripe payments
+
+
+ * Style toasts
+ * Use toast for feedback with inventory
+        * Inventory - show item information somehow feedback to user when we couldn't save to db
+
+* Inventory
+    Display information about the selected item.
+        Offscreen for mobile devices
+
+ * Style login/logout page
+
+ * Add some content to home page
+
+ * Use dotenv to load in sensitive data
 ---------------------------
- * Inventory - show item information somehow
-                - feedback to user when we couldn't save to db
 
- * Create bag
-
- * Create checkout
-
- * Implement stripe payments
-
-
----------------------------
  * Deploy the site
 
 ---------------------------
+
  * Do Readme
     * Colour pallete
     * Screen shot in sizzy
-
- L01
-    All criteria met, need to document manual testing done.
-
- L02
+    * Document manual testing
     * Create relational database schema
-    * One form with validation that will allow users to create records in the database (mine doesn't create records)
-
- L03
-    * Authentication mechanism, allowing user to register and login (using twitch channel). Addressing a clear reason why the users need to.
-    * Login/Registration forms displayed to anonymous users.
-    * Non-admin users are not able to access the data store
-        If non superuser goes to admin login, redirect them to the last page.
+    * Document clear reason why users login
+    Potential bugs/features?
+    Sometimes when logging in with twitch account, the user is presented with a black and white box that causes the login to fail. Retrying to login after this works. I'm not sure why this happens.
 
  L04
     * Implement sometime of online payment system using stripe. Can be One time payments.
@@ -48,17 +55,12 @@
         - relational db diagram
         - diagram explaining front-end javascript
 
-
+----------------------
 
  * Create Blog?
 
-
-
-Potential bugs/features?
-Sometimes when logging in with twitch account, the user is presented with a black and white box that causes the login to fail. Retrying to login after this works. I'm not sure 
-why this happens.
-
 -------
+
 Resources used
 --------
 Find colourblind appropriate colours

@@ -19,11 +19,10 @@ o.scrolloff             = 10 --how many lines below cursor
 o.showbreak             = string.rep(' ',3)
 o.clipboard             = 'unnamedplus'
 o.swapfile              = false
-o.mouse                 = ''
+o.mouse                 = 'v'
 o.joinspaces            = true
 o.syntax                = 'on'
-o.completeopt           = "menuone,noselect" -- For nvim-compe
-o.termguicolors         = true
+
 
 -- Window-local options
 wo.number               = true
