@@ -1,4 +1,10 @@
- * Change twitch app on success login URL to /MUD not /Character
+ * Style toasts
+ * Use toast for feedback with inventory
+        * Inventory - show item information somehow feedback to user when we couldn't save to db
+
+* Inventory
+    Display information about the selected item.
+        Offscreen for mobile devices
 
  * Create Item shop
     * filter for items
@@ -12,13 +18,7 @@
          * Implement stripe payments
 
 
- * Style toasts
- * Use toast for feedback with inventory
-        * Inventory - show item information somehow feedback to user when we couldn't save to db
 
-* Inventory
-    Display information about the selected item.
-        Offscreen for mobile devices
 
  * Style login/logout page
 

@@ -7,8 +7,7 @@ local cmd=vim.cmd
 vim.g.mapleader = ","
 vim.g.python3_host_prog="~/.pyenv/versions/neovim3/bin/python"
 
---require('arbaya.settings')
-require('arbaya.keybindings')
 require('arbaya.options')
+require('arbaya.keybindings')
 require('arbaya.plugins')
 require('arbaya.config')

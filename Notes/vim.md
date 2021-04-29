@@ -1,15 +1,10 @@
 # Get under your fingers:
 
-<leader> q - To see errors and warnings in file
-<leader> ca - To run code actions
-
-[c - Previous hunk
-]c - Next hunk
-<leader> hs - stage hunk
-<leader> hu - undo stage hunk
-<leader> hR - reset buffer
-<leader> hp - preview hunk
-<leader> hb - blame line
+bind('n', '<leader>ghs', '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
+bind('n', '<leader>ghu', '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', opts)
+bind('n', '<leader>ghr', '<cmd>lua require"gitsigns".reset_hunk()<CR>', opts)
+bind('n', '<leader>ghv', '<cmd>lua require"gitsigns".preview_hunk()<CR>', opts)
+bind('n', '<leader>ghb', '<cmd>lua require"gitsigns".blame_line()<CR>', opts)
 
 
 # Suggestions

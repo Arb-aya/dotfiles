@@ -20,13 +20,7 @@ require('gitsigns').setup {
     use_decoration_api = true,
 }
 
---vim.api.nvim_exec([[
---highlight GitGutterAdd    guifg=#009900 ctermfg=2
---highlight GitGutterChange guifg=#bbbb00 ctermfg=3
---highlight GitGutterDelete guifg=#ff2222 ctermfg=1
---]], false)
-
--- -- Default keymap options
+-- Default keymap options
 local opts = { noremap = true }
 
 bind('n', '<leader>ghs', '<cmd>lua require"gitsigns".stage_hunk()<CR>', opts)
