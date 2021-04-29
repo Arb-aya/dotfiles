@@ -1,0 +1,49 @@
+local opt = vim.opt
+
+opt.showmode      = true
+opt.showcmd       = true
+opt.cmdheight     = 1 --height of command bar
+opt.incsearch     = true
+opt.showmatch     = true
+opt.number        = true
+opt.ignorecase    = true --ignore case of searches
+opt.smartcase     = true
+opt.hidden        = true
+opt.cursorline    = true
+opt.splitright    = true
+opt.splitbelow    = true
+opt.hlsearch      = true
+opt.scrolloff     = 10 --how many lines below cursor
+
+-- Tabs
+opt.autoindent    = true
+opt.cindent       = true
+opt.wrap          = true
+
+opt.tabstop       = 4
+opt.shiftwidth    = 4
+opt.softtabstop   = 4
+opt.expandtab     = true
+
+opt.breakindent   = true
+opt.showbreak     = string.rep(' ',3)
+opt.linebreak     = true
+
+opt.clipboard     = 'unnamedplus'
+opt.swapfile      = false
+opt.mouse         = 'n'
+
+opt.formatoptions = opt.formatoptions
+	- 'a'
+	- 't'
+	+ 'c'
+	+ 'q'
+	- 'o'
+	+ 'r'
+	+ 'n'
+	+ 'j'
+	- '2'
+
+opt.joinspaces    = false
+
+opt.fillchars     = { eob = "~"}
